@@ -55,9 +55,9 @@ const Navbar: React.FC = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-lg font-light transition-colors uppercase  hover:text-blue-600 ${
+                className={`text-lg font-light transition-colors uppercase  hover:text-amber-400 ${
                   location.pathname === link.path
-                    ? 'text-blue-600 font-semibold'
+                    ? 'text-amber-500 font-semibold'
                     : 'text-gray-800'
                 }`}
               >
@@ -94,9 +94,9 @@ const Navbar: React.FC = () => {
                 key={link.name}
                 to={link.path}
                 onClick={closeMenu}
-                className={`py-3 text-lg font-medium transition-colors hover:text-blue-600 ${
+                className={`py-3 text-lg font-medium transition-colors hover:text-amber-400 ${
                   location.pathname === link.path
-                    ? 'text-blue-600 font-semibold'
+                    ? 'text-amber-500 font-semibold'
                     : 'text-gray-800'
                 }`}
               >
