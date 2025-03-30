@@ -1,8 +1,19 @@
-import { StrictMode } from 'react';
+import { StrictMode, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.tsx';
 import './index.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+// Initialize AOS
+AOS.init({
+  duration: 800,
+  once: false,
+  mirror: true,
+  easing: 'ease-out',
+  offset: 50
+});
 
 // Check if the environment is set up correctly
 const checkEnvironment = () => {

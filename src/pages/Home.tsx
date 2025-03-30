@@ -1,18 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { useSpring, animated } from 'react-spring';
 import { Link } from 'react-router-dom';
-import { Users, Briefcase, Building, Award,ArrowRight } from 'lucide-react';
+import { Users, Briefcase, Building, Award, ArrowRight } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import AnimatedSection from '../components/AnimatedSection';
 
 const Home: React.FC = () => {
-  const fadeIn = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-    delay: 300,
-  });
-
   const services = [
     {
       icon: <Users size={40} className="text-amber-400" />,
@@ -61,7 +53,7 @@ const Home: React.FC = () => {
           </AnimatedSection>
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-12 max-w-6xl mx-auto">
-            <AnimatedSection delay={0.2}>
+            <div data-aos="fade-right" data-aos-delay="200" data-aos-duration="800">
               <div className="md:w-full lg:w-[600px] flex justify-center items-center">
                 <img 
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
@@ -69,9 +61,9 @@ const Home: React.FC = () => {
                   className="rounded-xl shadow-xl w-full h-[400px] object-cover hover:scale-105 transition-transform duration-300 border border-slate-200"
                 />
               </div>
-            </AnimatedSection>
+            </div>
 
-            <AnimatedSection delay={0.4}>
+            <div data-aos="fade-left" data-aos-delay="400" data-aos-duration="800">
               <div className="md:w-full lg:w-[600px] text-center md:text-left">
                 <h3 className="text-2xl md:text-3xl font-semibold text-amber-500 mb-6">
                   Where Talent Meets Opportunity
@@ -88,7 +80,7 @@ const Home: React.FC = () => {
                   Learn More
                 </Link>
               </div>
-            </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
@@ -96,7 +88,7 @@ const Home: React.FC = () => {
       {/* Services Section - Dark Theme */}
       <section className="py-20 bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-900">
         <div className="container mx-auto px-4 md:px-6">
-          <AnimatedSection>
+          <div data-aos="fade-up">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Services</h2>
               <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-amber-300 mx-auto mb-6"></div>
@@ -105,17 +97,22 @@ const Home: React.FC = () => {
                 the needs of businesses and job seekers alike.
               </p>
             </div>
-          </AnimatedSection>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
-              <AnimatedSection key={index} delay={0.2 * index}>
+              <div 
+                key={index} 
+                data-aos="fade-up" 
+                data-aos-delay={200 * index} 
+                data-aos-duration="500"
+              >
                 <div className="bg-white/10 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow hover:shadow-amber-500/10 border border-white/20 group">
                   <div className="mb-4 group-hover:scale-110 transform transition-transform duration-300">{service.icon}</div>
                   <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
                   <p className="text-slate-300">{service.description}</p>
                 </div>
-              </AnimatedSection>
+              </div>
             ))}
           </div>
 
@@ -133,39 +130,38 @@ const Home: React.FC = () => {
       {/* Industries Section - Light Theme */}
       <section className="py-20 bg-gradient-to-br from-slate-100 to-white">
         <div className="container mx-auto px-4 md:px-6">
-          <AnimatedSection>
+          <div data-aos="fade-up">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-indigo-950 mb-4">Industries We Serve</h2>
               <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-amber-300 mx-auto"></div>
             </div>
-          </AnimatedSection>
+          </div>
 
-          <animated.div style={fadeIn} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div data-aos="fade-in" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {industries.map((industry, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="bg-white p-6 rounded-lg text-center border border-slate-200 hover:border-amber-300 hover:bg-slate-50 transition-all shadow-sm hover:shadow-md"
-                whileHover={{ scale: 1.03 }}
+                data-aos="fade-up"
+                data-aos-delay={100 * index}
+                data-aos-duration="500"
+                className="bg-white p-6 rounded-lg text-center border border-slate-200 hover:border-amber-300 hover:bg-slate-50 transition-all shadow-sm hover:shadow-md hover:scale-103"
               >
                 <h3 className="text-xl font-semibold text-indigo-950 mb-2">{industry}</h3>
-              </motion.div>
+              </div>
             ))}
-          </animated.div>
+          </div>
         </div>
       </section>
 
       {/* Stats Section - Dark Theme */}
       <section className="py-20 bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-900">
         <div className="container mx-auto px-4 md:px-6">
-          <AnimatedSection>
+          <div data-aos="fade-up">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Impact</h2>
               <div className="w-20 h-1 bg-gradient-to-r from-amber-400 to-amber-300 mx-auto"></div>
             </div>
-          </AnimatedSection>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -174,14 +170,19 @@ const Home: React.FC = () => {
               { value: '30+', label: 'Industries Served' },
               { value: '98%', label: 'Client Satisfaction' }
             ].map((stat, index) => (
-              <AnimatedSection key={index} delay={0.2 * index}>
+              <div 
+                key={index} 
+                data-aos="fade-up" 
+                data-aos-delay={200 * index} 
+                data-aos-duration="500"
+              >
                 <div className="bg-white/10 p-8 rounded-xl shadow-lg border border-white/20 text-center hover:shadow-xl transition-shadow hover:shadow-amber-500/10 group">
                   <h3 className="text-4xl md:text-5xl font-bold text-amber-400 mb-3 group-hover:text-amber-300 transition-colors">
                     {stat.value}
                   </h3>
                   <p className="text-slate-200 font-medium">{stat.label}</p>
                 </div>
-              </AnimatedSection>
+              </div>
             ))}
           </div>
         </div>
@@ -196,7 +197,7 @@ const Home: React.FC = () => {
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-200 rounded-full opacity-10 blur-3xl"></div>
 
         <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
-          <AnimatedSection>
+          <div data-aos="fade-up">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold mb-8 text-indigo-950 leading-tight">
                 Ready to Find Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-400">Perfect Match</span>?
@@ -213,7 +214,7 @@ const Home: React.FC = () => {
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
     </div>

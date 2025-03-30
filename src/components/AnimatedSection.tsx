@@ -1,27 +1,24 @@
 import React, { ReactNode } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-spring';
 
 interface AnimatedSectionProps {
   children: ReactNode;
   delay?: number;
+  animation?: string;
 }
 
-const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children, delay = 0 }) => {
-  const [ref, inView] = useInView({
-    rootMargin: '-100px 0px',
-    once: true,
-  });
-
+const AnimatedSection: React.FC<AnimatedSectionProps> = ({ 
+  children, 
+  delay = 0, 
+  animation = 'fade-up' 
+}) => {
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.8, delay: delay }}
+    <div 
+      data-aos={animation}
+      data-aos-delay={delay * 1000}
+      data-aos-duration="800"
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 
